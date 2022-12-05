@@ -11,7 +11,7 @@ import java.io.IOException;
 public class HelloApplication extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("employee.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("homePage.fxml"));
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
     }
