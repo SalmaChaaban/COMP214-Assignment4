@@ -4,12 +4,14 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
 <TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="811.0" prefWidth="871.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.comp214_assignment4.HomePageController">
@@ -116,9 +118,91 @@
                </children></AnchorPane>
       </content>
     </Tab>
-    <Tab text="Jobs Main Menu">
+    <Tab text="Create new Jobs">
       <content>
-        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <TabPane prefHeight="785.0" prefWidth="871.0" tabClosingPolicy="UNAVAILABLE">
+                    <tabs>
+                      <Tab text="Create New Job">
+                        <content>
+                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <ListView fx:id="jobsViewList" layoutX="92.0" layoutY="378.0" prefHeight="169.0" prefWidth="709.0" />
+                                    <Label layoutX="92.0" layoutY="318.0" prefHeight="27.0" prefWidth="358.0" text="Job Description View List" textFill="RED">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="92.0" layoutY="25.0" text="Job Creation Form" textFill="RED">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField layoutX="498.0" layoutY="147.0" prefHeight="25.0" prefWidth="300.0" promptText="Create New Maximum Salary" />
+                                    <TextField layoutX="92.0" layoutY="147.0" prefHeight="25.0" prefWidth="300.0" promptText="Create New Minimum Salary" />
+                                    <TextField layoutX="92.0" layoutY="80.0" prefHeight="25.0" prefWidth="300.0" promptText="Create New Job ID" />
+                                    <TextField layoutX="498.0" layoutY="80.0" prefHeight="25.0" prefWidth="300.0" promptText="Create New Job Title" />
+                                    <Button fx:id="createJobButton" layoutX="242.0" layoutY="216.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="121.0" text="Create" textFill="RED">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Button>
+                                    <Button fx:id="cancalCreationButton" layoutX="92.0" layoutY="216.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="121.0" text="Cancal" textFill="RED">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Button>
+                                    <Line endX="641.666748046875" endY="-3.0517578125E-5" layoutX="170.0" layoutY="286.0" startX="-100.0" />
+                                 </children>
+                              </AnchorPane>
+                        </content>
+                      </Tab>
+                      <Tab text="Identify Job description">
+                        <content>
+                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <TableView fx:id="jobDescription" layoutX="144.0" layoutY="218.0" prefHeight="149.0" prefWidth="583.0">
+                                      <columns>
+                                        <TableColumn prefWidth="130.0" text="Job ID" />
+                                        <TableColumn prefWidth="150.0" text="Job Title" />
+                                          <TableColumn prefWidth="150.0" text="Minimum Salary" />
+                                          <TableColumn prefWidth="150.0" text="Maximum Salary" />
+                                      </columns>
+                                    </TableView>
+                                    <Label layoutX="144.0" layoutY="445.0" text="Jobs Update" textFill="RED">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="jobIDUpdate" layoutX="144.0" layoutY="494.0" prefHeight="25.0" prefWidth="280.0" promptText="Update Job ID" />
+                                    <TextField fx:id="jobTitleUpdate" layoutX="447.0" layoutY="494.0" prefHeight="25.0" prefWidth="280.0" promptText="Update Job Title" />
+                                    <TextField fx:id="minSalaryUpdate" layoutX="144.0" layoutY="552.0" prefHeight="25.0" prefWidth="280.0" promptText="Update Minimum Salary" />
+                                    <TextField fx:id="maxSalaryUpdate" layoutX="447.0" layoutY="552.0" prefHeight="25.0" prefWidth="280.0" promptText="Update Maximum Salary" />
+                                    <Button fx:id="updateJobButton" layoutX="144.0" layoutY="609.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="121.0" text="Update" textFill="RED">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Button>
+                                    <Line endX="567.3333740234375" endY="-3.0517578125E-5" layoutX="201.0" layoutY="413.0" startX="-100.0" />
+                                    <ComboBox fx:id="jobIDSelection" layoutX="144.0" layoutY="101.0" prefHeight="28.0" prefWidth="583.0" />
+                                    <Label layoutX="144.0" layoutY="171.0" prefHeight="27.0" prefWidth="358.0" text="Job Description List Base on Job ID Selection" textFill="RED">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="143.0" layoutY="54.0" prefHeight="27.0" prefWidth="107.0" text="Select Job ID" textFill="RED">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </AnchorPane>
+                        </content>
+                      </Tab>
+                    </tabs>
+                  </TabPane>
+               </children></AnchorPane>
       </content>
     </Tab>
       <Tab text="Departments Main Menu">
