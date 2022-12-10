@@ -32,7 +32,6 @@
                                           <Font size="18.0" />
                                        </font>
                                     </Label>
-                                    <TextField fx:id="hireDateField" editable="false" layoutX="316.0" layoutY="211.0" prefHeight="25.0" prefWidth="243.0" promptText="Hire Date" />
                                     <TextField fx:id="numField" layoutX="14.0" layoutY="169.0" prefHeight="25.0" prefWidth="242.0" promptText="Phone Number" />
                                     <TextField fx:id="emailField" layoutX="616.0" layoutY="107.0" prefHeight="25.0" prefWidth="241.0" promptText="Email" />
                                     <TextField fx:id="fNameField" layoutX="14.0" layoutY="107.0" prefHeight="25.0" prefWidth="243.0" promptText="First Name" />
@@ -64,7 +63,12 @@
                                           <Font size="14.0" />
                                        </font>
                                     </Label>
-                                    <DatePicker fx:id="date" layoutX="317.0" layoutY="169.0" prefHeight="25.0" prefWidth="239.0" promptText="Hire Date" />
+                                    <Label fx:id="empHiredLabel" layoutX="360.0" layoutY="615.0" opacity="0.0" text="Employee is Hired!" textFill="#00d011">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <DatePicker fx:id="datePicker" layoutX="316.0" layoutY="169.0" prefHeight="25.0" prefWidth="242.0" promptText="Hire Date:" />
                                  </children></AnchorPane>
                         </content>
                       </Tab>
@@ -110,6 +114,11 @@
                                        </columnResizePolicy>
                                     </TableView>
                                     <TextField fx:id="empIDForEditField" layoutX="14.0" layoutY="621.0" prefHeight="25.0" prefWidth="137.0" promptText="Employee ID to update" />
+                                    <Label fx:id="empUpdatedLabel" layoutX="349.0" layoutY="693.0" opacity="0.0" text="Employee is Updated!" textFill="#00d011">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
                                  </children></AnchorPane>
                         </content>
                       </Tab>

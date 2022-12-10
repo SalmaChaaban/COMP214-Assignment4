@@ -129,32 +129,41 @@ public class DatabaseHandler {
     }
 
 
-    public static void hireEmployee(String firstName, String lastName, String email, String phoneNumber, double salary, String jobID, int managerID, int departmentID) throws SQLException {
+    public static void hireEmployee(String firstName, String lastName, String email, String phoneNumber, double salary, String jobID, int managerID, int departmentID, Date hireDate) throws SQLException {
 
-        PreparedStatement pst = connection.prepareStatement("INSERT INTO hr_employees (first_name, last_name, email, phone_number, job_id, salary, manager_id, department_id, employee_id, hire_date)" +
-                "VALUES (?,?,?,?,?,?,?,?,?,?)");
+//        PreparedStatement pst = connection.prepareStatement("INSERT INTO hr_employees (first_name, last_name, email, phone_number, job_id, salary, manager_id, department_id, employee_id, hire_date)" +
+//                "VALUES (?,?,?,?,?,?,?,?,?,?)");
+        CallableStatement pst = connection.prepareCall("CALL Employee_hire_sp(?,?,?,?,?,?,?,?,?)");
 
         pst.setString(1, firstName);
         pst.setString(2, lastName);
         pst.setString(3, email);
-        pst.setString(4, phoneNumber);
-        pst.setString(5, jobID);
-        pst.setDouble(6, salary);
-        pst.setInt(7, managerID);
-        pst.setInt(8, departmentID);
-        pst.setInt(9, setEmployeeID());
-        long millis = System.currentTimeMillis();
-        pst.setDate(10, new Date(millis));
+        pst.setDouble(4, salary);
+        long millis = hireDate.getTime();
+        pst.setDate(5, new Date(millis));
+        pst.setString(6, phoneNumber);
+        pst.setString(7, jobID);
+        pst.setInt(8, managerID);
+        pst.setInt(9, departmentID);
 
-        int val = pst.executeUpdate(); // val returns the row count
+
+        pst.execute();
     }
 
 
     public static void updateEmployee(int empID, String newPhoneNumber, String newEmail, Double newSalary) throws SQLException {
 
-        Statement st = connection.createStatement();
-        ResultSet rs = st.executeQuery("UPDATE hr_employees SET phone_number = '" + newPhoneNumber + "', email = '" + newEmail + "', salary = '" + newSalary + "' WHERE employee_id = "+ empID );
+//        Statement st = connection.createStatement();
+//        ResultSet rs = st.executeQuery("UPDATE hr_employees SET phone_number = '" + newPhoneNumber + "', email = '" + newEmail + "', salary = '" + newSalary + "' WHERE employee_id = "+ empID );
 
+        CallableStatement pst = connection.prepareCall("CALL updateSalaryPhoneEmail(?,?,?,?)");
+
+        pst.setInt(1, empID);
+        pst.setDouble(2, newSalary);
+        pst.setString(3, newPhoneNumber);
+        pst.setString(4, newEmail);
+
+        pst.execute();
     }
 
 

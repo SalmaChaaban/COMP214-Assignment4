@@ -10,6 +10,7 @@ import javafx.util.StringConverter;
 import org.w3c.dom.Text;
 
 import java.net.URL;
+import java.sql.Date;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
@@ -32,12 +33,18 @@ public class HomePageController implements Initializable  {
     private TextField numField;
     @FXML
     private TextField hireDateField;
+
+    @FXML
+    private DatePicker datePicker;
     @FXML
     private TextField salaryField;
     @FXML
     private Button hireButton;
     @FXML
     private Button cancelHireButton;
+    @FXML
+    private Label empHiredLabel;
+
 
 
     // Employees Table in the Employee List Scene
@@ -80,6 +87,8 @@ public class HomePageController implements Initializable  {
     private TextField newSalaryField;
     @FXML
     private Button updateEmpButton;
+    @FXML
+    private Label empUpdatedLabel;
 
 
 
@@ -187,7 +196,7 @@ public class HomePageController implements Initializable  {
     public void hireEmployee() throws SQLException {
 
         DatabaseHandler.hireEmployee(fNameField.getText(), lNameField.getText(), emailField.getText(), numField.getText(),
-                Double.parseDouble(salaryField.getText()), jobList.getValue().ID, managerList.getValue().empID, departmentList.getValue().departmentID);
+                Double.parseDouble(salaryField.getText()), jobList.getValue().ID, managerList.getValue().empID, departmentList.getValue().departmentID, Date.valueOf(datePicker.getValue()));
 
     }
 
